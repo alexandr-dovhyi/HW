@@ -37,15 +37,17 @@ school = School(135, 800)
 # print(school.number_of_students)
 #6*. Create a new class SchoolBus that will inherit all of the methods from School and Bus and will have its own - bus_school_color
 class SchoolBus(School, Bus):
+
     def __int__(self,get_school_id, max_speed, mileage, seating_capacity, number_of_students, bus_school_color):
         #super().__int__(get_school_id, number_of_students, max_speed, mileage, seating_capacity)
         School.__init__(get_school_id, number_of_students)
         Bus.__init__(max_speed, mileage, seating_capacity)
         self.bus_school_color = bus_school_color
+
 s_b = SchoolBus(186, 300)
 print(s_b.get_school_id)
 print(s_b.number_of_students)
-print(s_b.bus_school_color('Yellow'))!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+
 
 #7. Polymorphism:  Create two instances, one of Bear and one of Wolf,
 #make a tuple of it and by using for call their action using the same method.
@@ -81,6 +83,9 @@ class City:
             return instance
         else:
             print("Your city is too small")
+
+# need comment task #9 for running
+
 # city = City('Kyiv', 1600)
 # city_1 = City('Kyiv', 100)
 # print(city)
@@ -144,9 +149,8 @@ class MyOrder:
             return False
 order_1 = MyOrder(['a', 'b', 'c'], 'd')
 order_2 = MyOrder([], 'a')
-print(bool(order_1))
-print(bool (order_2))
-
+print(order_1.__bool__())
+print(order_2.__bool__())
 
 
 
