@@ -82,7 +82,7 @@ class City:
         if population > 1500:
             return instance
         else:
-            print("Your city is too small")
+            return "Your city is too small"
 
 # need comment task #9 for running
 
