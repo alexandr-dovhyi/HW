@@ -112,29 +112,25 @@ class Concert:
     """
     max_visitors_num = 0
 
-    def __init__(self, visitors_count):
+    def __init__(self, visitors_count=0):
         self.visitors_count = visitors_count
 
     @property
-    def vis_cou(self):
-        return self.visitors_count
+    def visitors_count(self):
+        return self._visitors_count
 
-    @vis_cou.setter
-    def vis_cou(self, x):
-        if x > self.max_visitors_num:
-            self.visitors_count = self.max_visitors_num
+    @visitors_count.setter
+    def visitors_count(self, x):
+        if x < self.max_visitors_num:
+            self._visitors_count = x
         else:
-            self.visitors_count = x
+            self._visitors_count = self.max_visitors_num
 
 
-concert = Concert(79)
-Concert.max_visitors_num = 80
-print(concert.vis_cou)
-
-concert_1 = Concert(81)
-Concert.max_visitors_num = 80
-print(concert_1.vis_cou)
-
+Concert.max_visitors_num = 50
+concert = Concert(50)
+concert.visitors_count = 1000
+print(concert.visitors_count)  # 50
 
 # 6.
 import dataclasses
@@ -223,9 +219,11 @@ class Student:
 
 
 student = Student(000, 'Alex')
-setattr(student, 'student_email', '12321@i.ua')
-# print(student.name)
-print(getattr(student, 'student_email'))
+setattr(student, 'email', '12321@i.ua')
+student_email = student.email
+#print(student.name)
+print(getattr(student, 'email'))
+
 
 
 # 11*.
