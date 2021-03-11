@@ -76,26 +76,24 @@ class Pasta:
         pasta_2 = Pasta.bolognaise()
         pasta_2.ingredients will equal to ['bacon', 'parmesan', 'eggs']
     """
-    CARBONARA = ['forcemeat', 'tomatoes']
-    BOLOGNAISE = ['bacon', 'parmesan', 'eggs']
 
     def __init__(self, ingredients):
         self.ingredients = ingredients
 
     @classmethod
     def carbonara(cls):
-        return f'ingredients for carbonara: {cls.CARBONARA}'
+        return Pasta(['forcemeat', 'tomatoes'])
 
     @classmethod
     def bolognaise(cls):
-        return f'ingredients for bolognaise: {cls.BOLOGNAISE}'
+        return Pasta(['bacon', 'parmesan', 'eggs'])
 
 
 pasta_1 = Pasta(["tomato", "cucumber"])
 pasta_2 = Pasta.bolognaise()
 
 print(pasta_1.ingredients)
-print(pasta_2)
+print(pasta_2.ingredients)
 
 
 # 5*.
@@ -163,7 +161,6 @@ print(data_1)
 print(data_1[5])
 print(data_1.age)
 
-
 # 8.
 class AddressBook:
     """
@@ -180,7 +177,8 @@ class AddressBook:
         self.age = age
 
     def __str__(self):
-        return f'{self.key, self.name, self.phone_number, self.address, self.email, self.birthday, self.age}'
+        return f'AddressBook(key = {self.key}, name = {self.name}, phone_number = {self.phone_number}, ' \
+               f'address = {self.address}, email = {self.email}, birthday = {self.birthday}, age = {self.age})'
 
 
 address_book = AddressBook(16, 'Alex', '065564', 'Second street', '1@i.ua', '25.25.25', 18)
