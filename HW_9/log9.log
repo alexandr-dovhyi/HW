@@ -1,0 +1,22 @@
+2021-03-21 21:44:15,152 - root - INFO - START!
+2021-03-21 21:44:23,636 - root - INFO - Entered first number 5
+2021-03-21 21:44:25,237 - root - INFO - Entered second number 6
+2021-03-21 21:44:28,196 - root - INFO - Checked action
+2021-03-21 21:44:28,196 - root - INFO - Choosed action +
+2021-03-21 21:44:28,196 - root - INFO - Called function calc
+2021-03-21 21:44:28,196 - root - INFO - Printed result: 11
+2021-03-21 21:44:28,196 - root - INFO - END!
+2021-03-21 21:44:41,818 - root - INFO - START!
+2021-03-21 21:44:48,560 - root - INFO - Entered first number 7
+2021-03-21 21:44:52,544 - root - INFO - Entered first number 7
+2021-03-21 21:44:57,220 - root - INFO - Entered second number 0
+2021-03-21 21:44:59,108 - root - INFO - Checked action
+2021-03-21 21:44:59,108 - root - INFO - Choosed action /
+2021-03-21 21:44:59,108 - root - ERROR - ZeroDivisionError
+Traceback (most recent call last):
+  File "/home/alex/PycharmProjects/Cursor/HW/HW_9/HW_9 "Logging and Exceptions"  Oleksandr Dovhyi.py", line 58, in calc
+    x / y
+ZeroDivisionError: division by zero
+2021-03-21 21:44:59,109 - root - INFO - Called function calc
+2021-03-21 21:44:59,109 - root - INFO - Printed result: 0
+2021-03-21 21:44:59,109 - root - INFO - END!
