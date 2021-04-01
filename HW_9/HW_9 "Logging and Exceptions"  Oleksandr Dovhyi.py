@@ -1,5 +1,6 @@
 import logging
 import time
+
 """
 Task 1
 Напишіть калькулятор в якого будуть реалізовані операції додавання, віднімання, множення, ділення, піднесення в
@@ -125,79 +126,63 @@ class VacCleaner:
         self.tank = tank
 
     def wash(self):
-        if 2 < self.water <= 15:
-            self.water -= 2
-            raise LowWater
-        elif 0 < self.water <= 2:
-            self.water = 0
-            raise LowWater
-        elif self.water <= 0:
+        if self.water == 0:
             raise WithoutWater
         else:
-            self.water -= 2
-            return f'Washing...\n Water tank is {self.water}%'
+            self.water -= 1
+            print(f'Washing...\n Water tank is {self.water}%')
+            if 2 <= self.water <= 15:
+                raise LowWater
 
     def perc_batt(self):
-        if 0 < self.battery <= 20:
-            self.battery -= 1
-            raise LowBattery
-        elif self.battery <= 0:
+        if self.battery <= 0:
             raise WithoutCharge
         else:
             self.battery -= 1
-            return f'Mooving...\n Battery is {self.battery}%.'
+            print(f'Moving...\n Battery is {self.battery}%.')
+            if 1 <= self.battery <= 20:
+                raise LowBattery
 
     def full_tank(self):
-        if self.tank >= 90:
-            self.tank += 1
-            raise CleanTank
-        elif self.tank == 100:
+        if self.tank >= 100:
             raise FullTank
         else:
             self.tank += 1
-            return f'Cleaning...\n Tank is {self.tank}%.'
+            print(f'Cleaning...\n Tank is {self.tank}%.')
+            if 99 >= self.tank >= 90:
+                raise CleanTank
 
 
 def move():
-    value_water = 50
-    value_batt = 50
-    value_tank = 50
+    vac_cleaner = VacCleaner(5, 50, 50)
 
-    test_w = VacCleaner(value_water, value_batt, value_tank).wash
-    test_b = VacCleaner(value_water, value_batt, value_tank).perc_batt
-    test_t = VacCleaner(value_water, value_batt, value_tank).full_tank
-
-    print(f'Level of water tank is {value_water}%.')
-    print(f'Level of charge {value_batt}%.')
-    print(f'Fullness of dust tank is {value_tank}%.')
+    print(f'Level of water tank is {vac_cleaner.water}%.')
+    print(f'Level of charge {vac_cleaner.battery}%.')
+    print(f'Fullness of dust tank is {vac_cleaner.tank}%.')
     print('Start cleaning:')
     while True:
         try:
-            if value_water >= 0:
-                print(test_w())
-            else:
-                break
-        except LowWater:
-            print(f'Water is {value_water}%. Need add.')
-        try:
-            if value_batt > 0:
-                print(test_b())
-            else:
-                break
+            vac_cleaner.perc_batt()
         except LowBattery:
-            print(f'WARNING: level of battery {value_batt}%. \n Need charging.')
-        try:
-            if value_tank < 100:
-                print(test_t())
-            else:
-                break
-        except CleanTank:
-            print(f'WARNING: level of fullness tank is {value_tank}%. \n Need cleaning tank.')
+            print(f'WARNING: level of battery {vac_cleaner.battery}%. \n Need charging.')
+        except WithoutCharge:
+            print(f'level of battery {vac_cleaner.battery}%. \n STOP!!!.')
+            break
 
-        value_water -= 2
-        value_batt -= 1
-        value_tank += 2
-        time.sleep(1.5)
+        try:
+            vac_cleaner.wash()
+        except LowWater:
+            print(f'Water is {vac_cleaner.water}%. Need add.')
+        except WithoutWater:
+            print(f'Level of water {vac_cleaner.water}%, only cleaning ')
+
+        try:
+            vac_cleaner.full_tank()
+        except CleanTank:
+            print(f'WARNING: level of fullness tank is {vac_cleaner.tank}%. \n Need cleaning tank.')
+        except FullTank:
+            print(f'Dust tank is {vac_cleaner.tank}%, only washing!')
+        time.sleep(1)
 
 
 move()
